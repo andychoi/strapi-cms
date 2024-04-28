@@ -16,6 +16,8 @@
     "@strapi/provider-upload-aws-s3": "^4.24.0",
     "@strapi/strapi": "4.24.0",
     "better-sqlite3": "8.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "passport-azure-ad-oauth2": "^0.0.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",

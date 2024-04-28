@@ -132,11 +132,14 @@ To change the database, edit the config/environments/production/database.json fi
 Now it will pick database credentials from the environment variable in production.
 
 ## Security
-- Admin Panel MFA, SSO with Azure AD
+- Admin Panel MFA
+- SSO with Azure AD https://docs.strapi.io/dev-docs/configurations/sso#microsoft
 - https://docs.strapi.io/dev-docs/providers
+- user permissions plugin extension: https://forum.strapi.io/t/looking-to-extend-modify-the-users-permissions-plugins-handling-of-provider-authentication/28524
 
 ## Custom development
 - Custom uploader: https://oramind.com/develop-strapi-upload-provider/
 
 ## Misc
+- Strapi starters & templates https://github.com/strapi/starters-and-templates
 - random secret: openssl rand -hex 64
