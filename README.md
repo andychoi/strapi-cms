@@ -134,6 +134,7 @@ Now it will pick database credentials from the environment variable in productio
 ## Security
 - Admin Panel MFA
 - SSO with Azure AD https://docs.strapi.io/dev-docs/configurations/sso#microsoft
+- Custom SSO - need upgrade: https://github.com/andychoi/strapi-plugin-sso4
 - https://docs.strapi.io/dev-docs/providers
 - user permissions plugin extension: https://forum.strapi.io/t/looking-to-extend-modify-the-users-permissions-plugins-handling-of-provider-authentication/28524
 
@@ -142,4 +143,5 @@ Now it will pick database credentials from the environment variable in productio
 
 ## Misc
 - Strapi starters & templates https://github.com/strapi/starters-and-templates
+- Frontend, WYSIWYG editor - https://forum.strapi.io/t/blocks-rich-text-editor/32588/9
 - random secret: openssl rand -hex 64
