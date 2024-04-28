@@ -52,9 +52,12 @@ This section allows to access to the `build` folder which contains the Admin pan
 
 ## Last point....
 Don't run  `npm i`, use `yarn` instead to be sure to get the right version package
- 
-## .env
-NODE_ENV="PRODUCTION"
+
+# Environment
+Refer this: https://docs.strapi.io/dev-docs/configurations/environment#strapi-s-environment-variables
+
+## .env Example
+NODE_ENV="DEVELOPMENT"
 WEBSITE_NODE_DEFAULT_VERSION="20.12.2"
 WEBSITE_RUN_FROM_PACKAGE="0"
 DATABASE_CLIENT="sqlite"
@@ -64,3 +67,67 @@ DATABASE_USERNAME=""
 DATABASE_PASSWORD=""
 DATABASE_SSL=false
 DEV_MODE=true
+
+HOST=127.0.0.1
+PORT=1337
+APP_KEYS={random-string-doesn’t-matter}
+API_TOKEN_SALT={random-string-doesn’t-matter}
+ADMIN_JWT_SECRET={random-string-doesn’t-matter}
+TRANSFER_TOKEN_SALT={random-string-doesn’t-matter}
+JWT_SECRET={random-string-doesn’t-matter}
+
+## plugins to install
+Documentation plugin
+We’ll install the documentation plugin from the Marketplace section for easy access to API details. This plugin will create the swagger specification for the API.
+
+## Setting up Strapi’s JWT-based authentication
+Authentication is an important element of any application. Strapi has JWT-based authentication out of the box.
+
+A default key is used for signing JWT. A signing key can be changed in the configuration file /extensions/users-permissions/config/jwt.json. The API for user signup and login is already baked into the platform.
+``
+{
+  "jwtSecret": "f1b4e23e-480b-4e58-923e-b759a593c2e0"
+}
+``
+
+We’ll use the local provider for authentication. This password and email/username are used to authenticate the user. If we click on “Documentation” from the sidebar, it will provide an option to see the swagger API documentation.
+
+
+## Authentication roles and permissions
+Strapi has two roles that are used to control access to content by default: public and authenticated. The public role is for an unauthenticated user, while the authenticated role is for — you guessed it — an authenticated user.
+
+These roles are automatically assigned to a user based on their authentication status. “Public” users are allowed to read blogs and comments and “Authenticated” users can comment on the blog and edit comments. Roles can be edited in the Roles and Permissions section.
+
+## Switching from SQLite to PostgreSQL
+Strapi supports both NoSQL and SQL databases. Changing the database is as simple as changing the env variable in the configuration folder.
+
+By default, Strapi uses SQLite, which is good for local testing, but in production you should use a production-ready database such as PostgreSQL or MySQL. We’ll use PostgreSQL here.
+
+To change the database, edit the config/environments/production/database.json file.
+
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "bookshelf",
+      "settings": {
+        "client": "postgres",
+        "host": "${process.env.DATABASE_HOST }",
+        "port": "${process.env.DATABASE_PORT }",
+        "database": "${process.env.DATABASE_NAME }",
+        "username": "${process.env.DATABASE_USERNAME }",
+        "password": "${process.env.DATABASE_PASSWORD }"
+      },
+      "options": {}
+    }
+  }
+}
+Now it will pick database credentials from the environment variable in production.
+
+## Security
+- Admin Panel MFA, SSO with Azure AD
+- 
+
+
+## Misc
+- random secret: openssl rand -hex 64
